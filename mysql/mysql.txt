@@ -1,16 +1,20 @@
-# Create container with folder holded by the host
-docker run --name mysql_server -v ~/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql
+# Create container with folder holded by the host which contains database
+docker run --name mysql_server -v ~/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+
+# how to start container
+docker start mysql_server
 
 # how to stop container
 docker stop mysql_server
 
-# how to start
-docker start mysql_server
-
 # remove container
 docker rm mysql_server
 
+# run bash in container
+docker exec -it mysql_server bash
 
+# list all running containers
+docker ps -a
 ---------------------------
 mysql commands
 
