@@ -1,3 +1,6 @@
+#pull mysql from repository
+docker pull mysql
+
 # Create container with folder holded by the host which contains database
 docker run --name mysql_server -v ~/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
 
