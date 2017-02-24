@@ -2,7 +2,7 @@
 docker pull mysql
 
 # Create container with folder holded by the host which contains database
-docker run --name mysql_server -v ~/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+docker run --name mysql_server -v ~/MyRepo/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
 
 # how to start container
 docker start mysql_server
@@ -16,6 +16,9 @@ docker rm mysql_server
 # run bash in container
 docker exec -it mysql_server bash
 
+# get container ip
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' $ID
+
 # list all running containers
 docker ps -a
 ---------------------------
@@ -24,3 +27,5 @@ mysql commands
 show databases
 use database
 create database name
+# import sql file in database
+mysql -u username -p database_name < file.sql
