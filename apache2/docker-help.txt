@@ -1,8 +1,8 @@
-#pull mysql from repository
-docker pull mysql
+# build container from image
+docker build -t httpd .
 
-# Create container with folder holded by the host which contains database
-docker run --name mysql_server -v ~/MyRepo/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
+# run container with name
+docker run --name polezen -d httpd
 
 # how to start container
 docker start mysql_server
