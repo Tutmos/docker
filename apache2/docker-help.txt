@@ -26,7 +26,13 @@ docker ps -a
 docker save -o ~/polezen.tar polezen
 
 # save container and move around...
+docker export polezen | gzip > ~/polezen.tar.gz
+
+# save image to filesystem and then move around
 docker save -o ~/polezen.tar polezen
+
+# restore archive to image
+zcat polezen.tar.gz | docker import - polezen.new.image
 
 # restore container as image
 docker load -i /root/container1.tar
