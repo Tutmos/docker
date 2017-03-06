@@ -5,24 +5,34 @@ docker build -t httpd .
 docker run --name polezen -d httpd
 
 # how to start container
-docker start mysql_server
+docker start polezen
 
 # how to stop container
-docker stop mysql_server
+docker stop polezen
 
 # remove container
-docker rm mysql_server
+docker rm polezen
 
 # run bash in container
-docker exec -it mysql_server bash
+docker exec -it polezen bash
 
 # get container ip
 docker inspect -f '{{ .NetworkSettings.IPAddress }}' $ID
 
 # list all running containers
 docker ps -a
----------------------------
-Edit files in container
+
+# save container and move around...
+docker save -o ~/polezen.tar polezen
+
+# save container and move around...
+docker save -o ~/polezen.tar polezen
+
+# restore container as image
+docker load -i /root/container1.tar
+
+# ---------------------------
+# Edit files in container
 
 $ docker cp CONTAINER:FILEPATH LOCALFILEPATH
 $ vi LOCALFILEPATH
