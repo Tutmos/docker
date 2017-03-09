@@ -1,0 +1,60 @@
+<modification>
+<name>Category Images in admin</name>
+<code>category-images-in-admin</code>
+<version>2.2</version>
+<author>opencartarabic.com</author>
+<link>https://www.opencartarabic.com</link>
+<file path="admin/view/template/catalog/category_list.tpl">
+<operation>
+<search><![CDATA[<td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>]]></search>
+<add position="after"><![CDATA[<td class="text-left"><?php echo $column_image; ?></td>]]></add>
+</operation>
+
+<operation>
+<search><![CDATA[<td class="text-left"><?php echo $category['name']; ?></td>]]></search>
+<add position="before"><![CDATA[<td class="center"><img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>" title="<?php echo $category['name']; ?>" style="padding: 1px; border: 1px solid #DDDDDD;" /></td>]]></add>
+</operation>
+</file>	
+
+<file path="admin/language/en-gb/catalog/category.php">
+<operation>
+<search><![CDATA[// Column]]></search>
+<add position="after"><![CDATA[$_['column_image']       = 'Image';]]></add>
+</operation>
+</file>
+
+<file path="admin/language/ar/catalog/category.php">
+<operation>
+<search><![CDATA[// Column]]></search>
+<add position="after"><![CDATA[$_['column_image']       = 'Image';]]></add>
+</operation>
+</file>	
+
+<file path="admin/controller/catalog/category.php">
+<operation>
+<search><![CDATA[$data['categories'][] = array(]]></search>
+<add position="before"><![CDATA[$this->load->model('tool/image');
+$cat_query = $this->db->query("SELECT image FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$result['category_id'] . "'");
+foreach ($cat_query->rows as $query) { 
+
+		 $image = $query['image']; 
+		 
+}
+if (!empty($image) && is_file(DIR_IMAGE . $image)) {
+
+			$thumb = $this->model_tool_image->resize($image, 40, 40);
+		} else {
+			$thumb= $this->model_tool_image->resize('no_image.png', 40, 40);
+		}
+]]></add>
+</operation>
+<operation>
+<search><![CDATA[$data['categories'][] = array(]]></search>
+<add position="after"><![CDATA['image' => $thumb,]]></add>
+</operation>	
+<operation>
+<search><![CDATA[$data['column_name'] = $this->language->get('column_name');]]></search>
+<add position="before"><![CDATA[$data['column_image'] = $this->language->get('column_image');]]></add>
+</operation>	
+</file>
+</modification>

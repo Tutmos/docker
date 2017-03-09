@@ -1,0 +1,13 @@
+<modification>
+<name>Auto-fill unique model number</name>
+<version>2.2</version>
+<author>opencartarabic.com</author>
+<code>auto-fill-unique-model-number</code>
+<link>www.opencartarabic.com</link>
+<file path="admin/controller/catalog/product.php"> 
+<operation>
+<search position="replace"><![CDATA[$data['model'] = '';]]></search>
+<add><![CDATA[$data['model'] = date("ymdHis");]]></add>
+</operation>
+</file>		
+</modification>
