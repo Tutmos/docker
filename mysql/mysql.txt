@@ -4,6 +4,10 @@ docker pull mysql
 # Create container with folder holded by the host which contains database
 docker run --name mysql_server -v ~/MyRepo/docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql
 
+# create policy for autorestart container if something happen:
+# https://docs.docker.com/engine/admin/start-containers-automatically/#restart-policy-details
+docker run -dit --restart always
+
 # how to start container
 docker start mysql_server
 
@@ -29,3 +33,7 @@ use database
 create database name
 # import sql file in database
 mysql -u username -p database_name < file.sql
+
+mysql -uuser -ppass
+drop database polezen
+create database polezen
