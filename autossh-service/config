@@ -1,0 +1,13 @@
+
+ Host cli-mysql-tunnel
+    HostName      vesel.ddns.net
+    User          warehouse
+    Port          2222
+    IdentityFile  ~/.ssh/warehouse_rsa.pub
+    LocalForward  7001 192.168.10.20:3306
+    ServerAliveInterval 30
+    ServerAliveCountMax 3
+
+Host *
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
