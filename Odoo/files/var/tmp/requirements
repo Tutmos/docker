@@ -1,0 +1,7 @@
+# odoo install those two from pypi
+num2words==0.5.6 --hash=sha256:529017394eef84daf63bb57e837fe2fb81363d1b06f6114e86608dae7ceb11ee
+xlwt==1.3.0 --hash=sha256:a082260524678ba48a297d922cc385f58278b8aa68741596a87de01a9c628b2e
+# those 3 are for py3o templates
+py3o.template==0.9.11 --hash=sha256:e994da4e9a584d13988ece44eeb680914255ad6e3f32f517fca555a6610c958d
+py3o.types==0.1.1 --hash=sha256:7f161439856f760db8d0c4381b21fa2742fe87d7183d1971f3ff9fe0d96d80b0
+pyjon.utils==0.7 --hash=sha256:8eaeb0267542d407f36b33dc7ce070cd5ec4ce48fc73b7e123c7d386dd73723a
